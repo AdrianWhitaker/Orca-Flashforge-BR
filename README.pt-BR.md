@@ -8,7 +8,7 @@ Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.ex
 
 O instalador inclui o catálogo e funciona offline. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
 
-SHA-256 do instalador: `9a601e223593baa32a33d55f2fb1bdf33fe59c42bf508381b52fa98963826609`.
+SHA-256 do instalador: `7ad6c7e00775425056ec22c974f2a30147abea5b2204f457893e3beac1207547`.
 
 O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compilado na raiz do repositório com `makensis -DCATALOG=../resources/i18n/pt_BR/Orca-Flashforge.mo installer/Instalar-Flash-Studio-PT-BR.nsi` no Linux, ou `makensis /DCATALOG=..\resources\i18n\pt_BR\Orca-Flashforge.mo installer\Instalar-Flash-Studio-PT-BR.nsi` no Windows.
 
@@ -20,6 +20,10 @@ O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compi
 4. Abra ou reinicie o Flash Studio. Em um Windows configurado em português, o aplicativo pode carregar o idioma automaticamente.
 
 Após atualizar o Flash Studio, confira se o catálogo continua na pasta. Para desfazer, selecione outro idioma nas preferências e remova o arquivo copiado, ou restaure a cópia anterior.
+
+## Cobertura no Flash Studio Desktop 1.7.23
+
+O instalador 1.0.4 acrescenta 1.726 traduções do OrcaSlicer e 14 traduções de comandos de filamentos mistos. A correspondência foi feita usando as chaves do catálogo instalado pela build Windows 1.7.23 (ac437297), incluindo a ajuda de **Altura da primeira camada**. Das 6.148 chaves do catálogo chinês dessa build, 5.066 têm correspondência exata no catálogo brasileiro. As demais ainda podem aparecer em inglês. A página inicial web e a documentação externa aberta pelos links de ajuda não são cobertas pelo catálogo nativo.
 
 ## Fonte e manutenção
 
