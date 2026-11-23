@@ -4,11 +4,11 @@ O pacote traduz a interface que usa os catálogos gettext do Flash Studio. Use o
 
 ## Instalador para Windows
 
-Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador verifica primeiro `C:\Program Files\Flashforge\Flash Studio Desktop\`. Se a busca automática não localizar o Flash Studio, o seletor de pastas do Windows será aberto. Pressione `Ctrl+L`, cole o caminho da pasta que contém `flash studio.exe` (ou `flash-studio.exe` em algumas versões), pressione `Enter` e confirme em **Selecionar pasta**. Depois, abra o Flash Studio e selecione **Português (Brasil)** nas preferências.
+Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador verifica primeiro `C:\Program Files\Flashforge\Flash Studio Desktop\`. Se a busca automática não localizar o Flash Studio, o seletor de pastas do Windows será aberto. Pressione `Ctrl+L`, cole o caminho da pasta que contém `flash studio.exe` (ou `flash-studio.exe` em algumas versões), pressione `Enter` e confirme em **Selecionar pasta**. Depois, abra ou reinicie o Flash Studio. Em um Windows configurado em português, o aplicativo pode carregar o idioma automaticamente.
 
 O instalador inclui o catálogo e funciona offline. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
 
-SHA-256 do instalador: `d26b0ed4b789b8239308a2b466a729e4d891168dd7749b5f4f3ecee63aace48d`.
+SHA-256 do instalador: `9a601e223593baa32a33d55f2fb1bdf33fe59c42bf508381b52fa98963826609`.
 
 O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compilado na raiz do repositório com `makensis -DCATALOG=../resources/i18n/pt_BR/Orca-Flashforge.mo installer/Instalar-Flash-Studio-PT-BR.nsi` no Linux, ou `makensis /DCATALOG=..\resources\i18n\pt_BR\Orca-Flashforge.mo installer\Instalar-Flash-Studio-PT-BR.nsi` no Windows.
 
@@ -17,13 +17,13 @@ O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compi
 1. Baixe [Orca-Flashforge.mo](resources/i18n/pt_BR/Orca-Flashforge.mo?raw=true) e feche o Flash Studio.
 2. Na pasta de instalação, localize `resources\i18n` e confirme que as pastas dos outros idiomas contêm arquivos `Orca-Flashforge.mo`.
 3. Crie a pasta `pt_BR` dentro de `i18n` e copie o arquivo para `resources\i18n\pt_BR\Orca-Flashforge.mo`. Se já existir um catálogo nesse caminho, guarde uma cópia antes de substituir.
-4. Abra o Flash Studio, selecione **Português (Brasil)** nas preferências de idioma e reinicie o aplicativo se solicitado.
+4. Abra ou reinicie o Flash Studio. Em um Windows configurado em português, o aplicativo pode carregar o idioma automaticamente.
 
 Após atualizar o Flash Studio, confira se o catálogo continua na pasta. Para desfazer, selecione outro idioma nas preferências e remova o arquivo copiado, ou restaure a cópia anterior.
 
 ## Fonte e manutenção
 
-O [catálogo editável](localization/i18n/pt_BR/Orca-Flashforge_pt_BR.po) usa o modelo `localization/i18n/OrcaSlicer.pot` deste fork. Foram mantidas 4.304 traduções do catálogo pt-BR existente e incorporadas 13 do [OrcaSlicer](https://github.com/OrcaSlicer/OrcaSlicer/blob/main/localization/i18n/pt_BR/OrcaSlicer_pt_BR.po) com as mesmas chaves de mensagem e marcadores de formatação. O modelo tem 4.344 entradas, das quais 27 ficaram sem tradução. Textos fora desse modelo, inclusive interfaces que usam outros mecanismos de idioma, podem aparecer em inglês. A compatibilidade em execução no Windows ainda precisa ser testada.
+O [catálogo editável](localization/i18n/pt_BR/Orca-Flashforge_pt_BR.po) usa o modelo `localization/i18n/OrcaSlicer.pot` deste fork. Foram mantidas 4.304 traduções do catálogo pt-BR existente e incorporadas 13 do [OrcaSlicer](https://github.com/OrcaSlicer/OrcaSlicer/blob/main/localization/i18n/pt_BR/OrcaSlicer_pt_BR.po) com as mesmas chaves de mensagem e marcadores de formatação. A versão 1.0.3 preenche as 27 entradas que estavam em branco e acrescenta 23 chaves vistas nas preferências e no código-fonte. O catálogo contém 4.367 entradas traduzidas. A página inicial mostrada em builds recentes usa recursos web separados e não é traduzida pelo catálogo nativo. A compatibilidade em execução no Windows ainda precisa ser testada.
 
 Para recompilar só o catálogo, use GNU gettext na raiz do repositório:
 
