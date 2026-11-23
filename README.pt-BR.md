@@ -4,11 +4,11 @@ O pacote traduz a interface que usa os catálogos gettext do Flash Studio. Use o
 
 ## Instalador para Windows
 
-Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador procura a instalação automaticamente. Se precisar localizar a pasta manualmente, selecione a pasta que contém `flash-studio.exe`. Depois, abra o Flash Studio e selecione **Português (Brasil)** nas preferências.
+Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador verifica primeiro `C:\Program Files\Flashforge\Flash Studio Desktop\`. Se a busca automática não localizar o Flash Studio, o seletor de pastas do Windows será aberto. Pressione `Ctrl+L`, cole o caminho da pasta que contém `flash-studio.exe`, pressione `Enter` e confirme em **Selecionar pasta**. Depois, abra o Flash Studio e selecione **Português (Brasil)** nas preferências.
 
 O instalador inclui o catálogo e funciona offline. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
 
-SHA-256 do instalador: `bcbfb6606fdd735bf082df86b582cdd8aa90536a0cf6d252e3af2f0fccfd53fd`.
+SHA-256 do instalador: `19f85039d9fc8fecf0c5e41ea2feea5c2a29041fe9c8a23acb08e9c0029ec35d`.
 
 O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compilado na raiz do repositório com `makensis -DCATALOG=../resources/i18n/pt_BR/Orca-Flashforge.mo installer/Instalar-Flash-Studio-PT-BR.nsi` no Linux, ou `makensis /DCATALOG=..\resources\i18n\pt_BR\Orca-Flashforge.mo installer\Instalar-Flash-Studio-PT-BR.nsi` no Windows.
 
