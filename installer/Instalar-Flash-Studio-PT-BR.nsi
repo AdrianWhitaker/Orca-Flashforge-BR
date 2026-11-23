@@ -4,11 +4,11 @@ OutFile "Instalar-Flash-Studio-PT-BR.exe"
 RequestExecutionLevel admin
 SetCompressor /SOLID zlib
 AutoCloseWindow true
-VIProductVersion "1.0.5.0"
+VIProductVersion "1.0.6.0"
 VIAddVersionKey "ProductName" "Flash Studio em português (Brasil)"
 VIAddVersionKey "FileDescription" "Instalador do catálogo de idioma pt-BR"
-VIAddVersionKey "FileVersion" "1.0.5"
-VIAddVersionKey "ProductVersion" "1.0.5"
+VIAddVersionKey "FileVersion" "1.0.6"
+VIAddVersionKey "ProductVersion" "1.0.6"
 VIAddVersionKey "LegalCopyright" "Distribuído sob a licença AGPL-3.0"
 
 !include "LogicLib.nsh"
@@ -155,16 +155,16 @@ Section
     InitPluginsDir
     SetOutPath "$PLUGINSDIR"
     ClearErrors
-    File "Definir-Idioma.ps1"
+    File "Definir-Idioma.exe"
     IfErrors language_failed
-    nsExec::Exec '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File "$PLUGINSDIR\Definir-Idioma.ps1" -InstallDir "$INSTDIR\."'
+    nsExec::ExecToStack '"$PLUGINSDIR\Definir-Idioma.exe" "$INSTDIR\."'
     Pop $0
+    Pop $1
     StrCmp $0 0 language_set
-    StrCmp $0 2 0 language_failed
-    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado. Feche todas as janelas do Flash Studio e execute este instalador novamente para ativar o português." /SD IDOK
+    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado, mas não foi possível alterar a preferência de idioma.$\r$\n$\r$\n$1" /SD IDOK
     Goto language_error
 language_failed:
-    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado, mas não foi possível alterar a preferência de idioma." /SD IDOK
+    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado, mas não foi possível preparar a alteração do idioma." /SD IDOK
 language_error:
     SetErrorLevel 1
     Goto done
