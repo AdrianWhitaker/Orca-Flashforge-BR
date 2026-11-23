@@ -8,7 +8,7 @@ Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.ex
 
 O instalador inclui o catálogo e funciona offline. A alteração é limitada à preferência de idioma e a configuração anterior é guardada em `Orca-Flashforge.conf.pt-br.bak`. A ativação usa um utilitário Windows compilado, sem depender de PowerShell. Se o Flash Studio estiver aberto ou a configuração não puder ser lida ou gravada, o instalador mostra o erro. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
 
-SHA-256 do instalador: `d65a63e941358e7c35c416f07aee3f07d7542e8dcd06220bd540bfbcb2770a02`.
+SHA-256 do instalador: `d1ab4df1841fc6f74aec748b81fa527dfc20d7e4e78ee8452dba3fbc7fe4353c`.
 
 Antes de compilar o instalador, gere o utilitário a partir do [código Go](installer/idioma/main_windows.go). No Linux, execute na raiz `CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o installer/Definir-Idioma.exe installer/idioma/main.go installer/idioma/main_windows.go`.
 
@@ -32,6 +32,8 @@ O instalador 1.0.4 acrescenta 1.726 traduções do OrcaSlicer e 14 traduções d
 A versão 1.0.7 inclui 7.703 entradas e cobre as 7.491 chaves de mensagem não vazias dos catálogos oficiais Orca-Flashforge desta build, incluindo a variante com ponto final da ajuda de **Altura da camada**. As entradas novas combinam reaproveitamento do OrcaSlicer, ajustes manuais e tradução automática. A cobertura foi verificada no catálogo compilado. A redação automática ainda pode precisar de revisão em contexto no aplicativo.
 
 A versão 1.0.8 corrige 112 entradas do catálogo anterior, incluindo dicas de impressão, comandos de retorno à origem e termos de filamentos mistos. O catálogo compilado preserva as 7.703 entradas, os plurais e os marcadores de formatação.
+
+A versão 1.0.10 encerra a revisão linguística do catálogo. As 1.909 entradas que ainda aguardavam conferência manual foram comparadas com o original, com 1.201 traduções corrigidas nessa etapa. O catálogo compilado preserva as 7.703 entradas.
 
 ## Fonte e manutenção
 
