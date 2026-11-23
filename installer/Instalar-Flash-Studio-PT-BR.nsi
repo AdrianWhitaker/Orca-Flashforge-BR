@@ -4,11 +4,11 @@ OutFile "Instalar-Flash-Studio-PT-BR.exe"
 RequestExecutionLevel admin
 SetCompressor /SOLID zlib
 AutoCloseWindow true
-VIProductVersion "1.0.4.0"
+VIProductVersion "1.0.5.0"
 VIAddVersionKey "ProductName" "Flash Studio em português (Brasil)"
 VIAddVersionKey "FileDescription" "Instalador do catálogo de idioma pt-BR"
-VIAddVersionKey "FileVersion" "1.0.4"
-VIAddVersionKey "ProductVersion" "1.0.4"
+VIAddVersionKey "FileVersion" "1.0.5"
+VIAddVersionKey "ProductVersion" "1.0.5"
 VIAddVersionKey "LegalCopyright" "Distribuído sob a licença AGPL-3.0"
 
 !include "LogicLib.nsh"
@@ -152,7 +152,24 @@ Section
     ${EndIf}
     System::Call 'kernel32::MoveFileExW(w "$StagedFile", w "$CatalogFolder\Orca-Flashforge.mo", i 9) i.r0'
     StrCmp $0 0 failed
-    MessageBox MB_OK|MB_ICONINFORMATION "Português (Brasil) instalado.$\r$\n$\r$\nAbra ou reinicie o Flash Studio. No Windows em português, o aplicativo pode carregar a tradução automaticamente." /SD IDOK
+    InitPluginsDir
+    SetOutPath "$PLUGINSDIR"
+    ClearErrors
+    File "Definir-Idioma.ps1"
+    IfErrors language_failed
+    nsExec::Exec '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -File "$PLUGINSDIR\Definir-Idioma.ps1" -InstallDir "$INSTDIR\."'
+    Pop $0
+    StrCmp $0 0 language_set
+    StrCmp $0 2 0 language_failed
+    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado. Feche todas as janelas do Flash Studio e execute este instalador novamente para ativar o português." /SD IDOK
+    Goto language_error
+language_failed:
+    MessageBox MB_OK|MB_ICONEXCLAMATION "O catálogo foi instalado, mas não foi possível alterar a preferência de idioma." /SD IDOK
+language_error:
+    SetErrorLevel 1
+    Goto done
+language_set:
+    MessageBox MB_OK|MB_ICONINFORMATION "Português (Brasil) instalado e ativado. Abra o Flash Studio." /SD IDOK
     Goto done
 failed:
     ${If} $StagedFile != ""

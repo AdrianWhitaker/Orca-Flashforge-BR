@@ -4,11 +4,11 @@ O pacote traduz a interface que usa os catálogos gettext do Flash Studio. Use o
 
 ## Instalador para Windows
 
-Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador verifica primeiro `C:\Program Files\Flashforge\Flash Studio Desktop\`. Se a busca automática não localizar o Flash Studio, o seletor de pastas do Windows será aberto. Pressione `Ctrl+L`, cole o caminho da pasta que contém `flash studio.exe` (ou `flash-studio.exe` em algumas versões), pressione `Enter` e confirme em **Selecionar pasta**. Depois, abra ou reinicie o Flash Studio. Em um Windows configurado em português, o aplicativo pode carregar o idioma automaticamente.
+Baixe [Instalar-Flash-Studio-PT-BR.exe](installer/Instalar-Flash-Studio-PT-BR.exe?raw=true) e abra o arquivo com o Flash Studio fechado. Após a confirmação do Windows, o instalador verifica primeiro `C:\Program Files\Flashforge\Flash Studio Desktop\`. Se a busca automática não localizar o Flash Studio, o seletor de pastas do Windows será aberto. Pressione `Ctrl+L`, cole o caminho da pasta que contém `flash studio.exe` (ou `flash-studio.exe` em algumas versões), pressione `Enter` e confirme em **Selecionar pasta**. O instalador 1.0.5 também define `app.language` como `pt_BR` no perfil Windows que executa o instalador. Ao reexecutá-lo com o Flash Studio fechado, o português volta a ser o idioma ativo. Use a mesma conta Windows com que você abre o Flash Studio.
 
-O instalador inclui o catálogo e funciona offline. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
+O instalador inclui o catálogo e funciona offline. A alteração é limitada à preferência de idioma e a configuração anterior é guardada em `Orca-Flashforge.conf.pt-br.bak`. Se o Windows bloquear a execução do PowerShell por política ou o Flash Studio estiver aberto, o instalador avisa que a preferência não foi alterada. Se já existir um catálogo pt-BR, a primeira versão encontrada é preservada como `Orca-Flashforge.mo.bak` na mesma pasta. O executável não tem assinatura digital e o Windows pode mostrar um aviso do SmartScreen.
 
-SHA-256 do instalador: `7ad6c7e00775425056ec22c974f2a30147abea5b2204f457893e3beac1207547`.
+SHA-256 do instalador: `e6601b1c3b4f353156c743affb752ca3de8b575e3aaa1dd70c2584d81dc3b08b`.
 
 O [código-fonte NSIS](installer/Instalar-Flash-Studio-PT-BR.nsi) pode ser compilado na raiz do repositório com `makensis -DCATALOG=../resources/i18n/pt_BR/Orca-Flashforge.mo installer/Instalar-Flash-Studio-PT-BR.nsi` no Linux, ou `makensis /DCATALOG=..\resources\i18n\pt_BR\Orca-Flashforge.mo installer\Instalar-Flash-Studio-PT-BR.nsi` no Windows.
 
