@@ -1120,7 +1120,7 @@ wxWindow* PreferencesDialog::create_general_page()
         //wxLANGUAGE_TURKISH,
         //wxLANGUAGE_POLISH,
         //wxLANGUAGE_CATALAN,
-        //wxLANGUAGE_PORTUGUESE_BRAZILIAN
+        wxLANGUAGE_PORTUGUESE_BRAZILIAN,
     };
 
     auto translations = wxTranslations::Get()->GetAvailableTranslations(SLIC3R_APP_KEY);
