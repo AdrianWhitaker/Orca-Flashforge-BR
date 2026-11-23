@@ -4,11 +4,11 @@ OutFile "Instalar-Flash-Studio-PT-BR.exe"
 RequestExecutionLevel admin
 SetCompressor /SOLID zlib
 AutoCloseWindow true
-VIProductVersion "1.0.1.0"
+VIProductVersion "1.0.2.0"
 VIAddVersionKey "ProductName" "Flash Studio em português (Brasil)"
 VIAddVersionKey "FileDescription" "Instalador do catálogo de idioma pt-BR"
-VIAddVersionKey "FileVersion" "1.0.1"
-VIAddVersionKey "ProductVersion" "1.0.1"
+VIAddVersionKey "FileVersion" "1.0.2"
+VIAddVersionKey "ProductVersion" "1.0.2"
 VIAddVersionKey "LegalCopyright" "Distribuído sob a licença AGPL-3.0"
 
 !include "LogicLib.nsh"
@@ -20,14 +20,19 @@ VIAddVersionKey "LegalCopyright" "Distribuído sob a licença AGPL-3.0"
 
 Var CatalogFolder
 Var StagedFile
+Var DirectoryError
 
 Function ValidateDirectory
     ClearErrors
+    StrCpy $DirectoryError "Nenhuma pasta foi selecionada."
     ${If} $INSTDIR == ""
         SetErrors
-    ${ElseIfNot} ${FileExists} "$INSTDIR\flash-studio.exe"
+    ${ElseIfNot} ${FileExists} "$INSTDIR\flash studio.exe"
+    ${AndIfNot} ${FileExists} "$INSTDIR\flash-studio.exe"
+        StrCpy $DirectoryError "Não encontrei flash studio.exe nem flash-studio.exe."
         SetErrors
     ${ElseIfNot} ${FileExists} "$INSTDIR\resources\i18n\*.*"
+        StrCpy $DirectoryError "Encontrei o Flash Studio, mas a pasta resources\i18n está ausente ou vazia."
         SetErrors
     ${EndIf}
 FunctionEnd
@@ -71,8 +76,8 @@ choose:
     IfErrors cancelled
     Call ValidateDirectory
     IfErrors 0 found
-    MessageBox MB_OK|MB_ICONEXCLAMATION "Selecione a pasta que contém flash-studio.exe e resources\i18n."
-    Goto choose
+    MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$DirectoryError$\r$\n$\r$\nPasta selecionada:$\r$\n$INSTDIR" IDRETRY choose
+    Goto cancelled
 
 missing:
     SetErrorLevel 1
