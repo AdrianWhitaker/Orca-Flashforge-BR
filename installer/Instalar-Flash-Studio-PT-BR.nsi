@@ -4,11 +4,11 @@ OutFile "Instalar-Flash-Studio-PT-BR.exe"
 RequestExecutionLevel admin
 SetCompressor /SOLID zlib
 AutoCloseWindow true
-VIProductVersion "1.0.6.0"
+VIProductVersion "1.0.7.0"
 VIAddVersionKey "ProductName" "Flash Studio em português (Brasil)"
 VIAddVersionKey "FileDescription" "Instalador do catálogo de idioma pt-BR"
-VIAddVersionKey "FileVersion" "1.0.6"
-VIAddVersionKey "ProductVersion" "1.0.6"
+VIAddVersionKey "FileVersion" "1.0.7"
+VIAddVersionKey "ProductVersion" "1.0.7"
 VIAddVersionKey "LegalCopyright" "Distribuído sob a licença AGPL-3.0"
 
 !include "LogicLib.nsh"
